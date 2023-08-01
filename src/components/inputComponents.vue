@@ -1,20 +1,14 @@
 <script >
 export default {
-    data() {
-        return {
-            text: 'Pedro Pereira'
-        }
+
+    props: {
+        msg: String
     },
-    methods: {
-        onInputHandler(event) {
-            this.text = event.target.value;
-        }
-    }
 }
 </script>
 <template>
     <div>
-        <h1>{{ text }}</h1>
-        <input type="text" v-on:input="(event) => onInputHandler(event)">
+        <h1>{{ msg }}</h1>
+        <input type="text" v-on:input="(event) => this.$parent.onInputHandler(event)">
     </div>
 </template>

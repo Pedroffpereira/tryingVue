@@ -1,17 +1,30 @@
 <script >
 import inputComponents from './components/inputComponents.vue'
 import wellcomeComponent from './components/welcomeComponent.vue'
+import welcomeByHourComponent from './components/welcomeByHourComponent.vue'
 export default {
+  data() {
+    return {
+      text: 'Pedro Pereira'
+    }
+  },
+  methods: {
+    onInputHandler(event) {
+      this.text = event.target.value;
+    }
+  },
   components: {
     inputComponents,
-    wellcomeComponent
+    wellcomeComponent,
+    welcomeByHourComponent
   }
 }
 </script>
 
 <template>
   <div>
-    <wellcomeComponent msg="welcome"></wellcomeComponent>
+    <wellcomeComponent :msg="text"></wellcomeComponent>
+    <welcomeByHourComponent :name="text"></welcomeByHourComponent>
     <div>
       <a href="https://vitejs.dev" target="_blank">
         <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -20,7 +33,7 @@ export default {
         <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
       </a>
     </div>
-    <inputComponents></inputComponents>
+    <inputComponents :msg="text" @onInputHandler="onInputHandler"></inputComponents>
   </div>
 </template>
 
